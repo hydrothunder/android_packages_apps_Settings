@@ -17,6 +17,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
+        <!-- HydroThunder Extra Info -->
+        <PreferenceScreen android:key="extrainfo"
+                android:title="@string/hydrothunderextrainfo"
+                android:summary="@string/hydrothunderextrainfo_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.hydrothunder.extrainfo.MainActivity" />
+        </PreferenceScreen>
+
         <!-- Changelog -->
         <PreferenceScreen android:key="changelog"
                 android:title="@string/changelog_hydrothunder_title"

@@ -21,4 +21,8 @@
     <string name="cpu_info">CPU</string>
     <string name="mem_info">RAM</string>
 
+    <!-- HydroThunder Extra Info -->
+    <string name="hydrothunderextrainfo">Extra Information</string>
+    <string name="hydrothunderextrainfo_summary">Display Extra Device Info</string>
+
 </resources>
