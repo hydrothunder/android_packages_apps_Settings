@@ -18,6 +18,7 @@
     <string name="disabled">Disabled</string>
     <string name="ok">Ok</string>
     <string name="reset_message">Reset all entries to default?</string>
+    <string name="extras_hydrothunder_settings">HydroThunder Extras</string>
     <string name="reset_default_message">Reset default</string>
     <string name="additional_options_title">Additional options</string>
     <string name="general_options_title">General</string>
