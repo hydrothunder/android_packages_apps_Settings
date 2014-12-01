@@ -14,4 +14,8 @@
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
 
+    <!-- About device screen, CPU and RAM info. -->
+    <string name="cpu_info">CPU</string>
+    <string name="mem_info">RAM</string>
+
 </resources>
