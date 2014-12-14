@@ -2815,6 +2815,9 @@
                        android:resource="@id/wireless_settings" />
         </activity>
 
+        <activity android:name=".hydrothunder.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".hydrothunder.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
         <activity android:name=".Settings$LockScreenSettingsActivity"
                   android:label="@string/lockscreen_settings"
                   android:taskAffinity="">
