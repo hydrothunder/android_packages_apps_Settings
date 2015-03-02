@@ -137,4 +137,15 @@
         android:entryValues="@array/status_bar_quick_qs_pulldown_values" />
     
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/statusbar_notifications_title" >
+
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="force_expanded_notifications"
+            android:title="@string/force_expanded_notifications_title"
+            android:summary="@string/force_expanded_notifications_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
