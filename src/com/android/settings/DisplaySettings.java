@@ -115,6 +115,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_LIVEDISPLAY = "live_display";
+    private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+    private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -135,6 +137,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mProximityCheckOnWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
+    private SwitchPreference mRecentsClearAll;
+    private ListPreference mRecentsClearAllLocation;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -165,6 +169,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
         addPreferencesFromResource(R.xml.display);
+
+	PreferenceScreen prefSet = getPreferenceScreen();
 
         PreferenceCategory displayPrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_DISPLAY);
@@ -235,6 +241,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 updateLcdDensityPreferenceDescription(currentDensity);
             }
         }
+
+        mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
+        mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,
+            Settings.System.SHOW_CLEAR_ALL_RECENTS, 1, UserHandle.USER_CURRENT) == 1);
+        mRecentsClearAll.setOnPreferenceChangeListener(this);
+
+        mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
+        int location = Settings.System.getIntForUser(resolver,
+                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0, UserHandle.USER_CURRENT);
+        mRecentsClearAllLocation.setValue(String.valueOf(location));
+        mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+        updateRecentsLocation(location);
 
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -739,6 +757,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist night mode setting", e);
             }
         }
+        if (preference == mRecentsClearAll) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.SHOW_CLEAR_ALL_RECENTS, value ? 1 : 0, UserHandle.USER_CURRENT);
+        }
+        if (preference == mRecentsClearAllLocation) {
+            int location = Integer.parseInt((String) objValue);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
+            updateRecentsLocation(location);
+        }
         return true;
     }
 
@@ -760,6 +789,37 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         });
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
+    }
+
+        private void updateRecentsLocation(int value) {
+        ContentResolver resolver = getContentResolver();
+        Resources res = getResources();
+        int summary = -1;
+
+        Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, value);
+
+        if (value == 0) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0);
+            summary = R.string.recents_clear_all_location_top_right;
+        } else if (value == 1) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 1);
+            summary = R.string.recents_clear_all_location_top_left;
+        } else if (value == 2) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 2);
+            summary = R.string.recents_clear_all_location_top_center;
+        } else if (value == 3) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3);
+            summary = R.string.recents_clear_all_location_bottom_right;
+        } else if (value == 4) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 4);
+            summary = R.string.recents_clear_all_location_bottom_left;
+        } else if (value == 5) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 5);
+            summary = R.string.recents_clear_all_location_bottom_center;
+        }
+        if (mRecentsClearAllLocation != null && summary != -1) {
+            mRecentsClearAllLocation.setSummary(res.getString(summary));
+        }
     }
 
     @Override
