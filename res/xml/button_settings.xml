@@ -59,6 +59,12 @@
 
     </PreferenceCategory>
 
+    <!-- Pie Control -->
+    <PreferenceScreen
+         android:key="pa_pie_control"
+         android:title="@string/pa_pie_control_title"
+         android:fragment="com.android.settings.hydrothunder.PieControl" />
+
     <PreferenceCategory
         android:key="power_key"
         android:title="@string/hardware_keys_power_key_title" >
