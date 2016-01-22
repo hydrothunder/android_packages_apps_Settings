@@ -86,6 +86,7 @@ import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.DisplayRotation;
 
 import cyanogenmod.hardware.LiveDisplayManager;
+import com.android.settings.dashboard.DashboardContainerView;
 import cyanogenmod.providers.CMSettings;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
@@ -116,7 +117,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_LIVEDISPLAY = "live_display";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
-        private static final String DASHBOARD_SWITCHES = "dashboard_switches";
+    private static final String DASHBOARD_SWITCHES = "dashboard_switches";
+        private static final String DASHBOARD_COLUMNS = "dashboard_columns";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
@@ -139,6 +141,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
     private ListPreference mDashboardSwitches;
+    private ListPreference mDashboardColumns;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -258,7 +261,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
 
-        mDashboardSwitches = (ListPreference) findPreference(DASHBOARD_SWITCHES);
+	mDashboardColumns = (ListPreference) findPreference(DASHBOARD_COLUMNS);
+        mDashboardColumns.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.DASHBOARD_COLUMNS, DashboardContainerView.mDashboardValue)));
+        mDashboardColumns.setSummary(mDashboardColumns.getEntry());
+        mDashboardColumns.setOnPreferenceChangeListener(this);
+        
+	mDashboardSwitches = (ListPreference) findPreference(DASHBOARD_SWITCHES);
         mDashboardSwitches.setValue(String.valueOf(Settings.System.getInt(
                 getContentResolver(), Settings.System.DASHBOARD_SWITCHES, 0)));
         mDashboardSwitches.setSummary(mDashboardSwitches.getEntry());
@@ -774,7 +783,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
         }
-	        if (preference == mDashboardSwitches) {
+        if (preference == mDashboardColumns) {
+            Settings.System.putInt(getContentResolver(), Settings.System.DASHBOARD_COLUMNS,
+                    Integer.valueOf((String) objValue));
+            mDashboardColumns.setValue(String.valueOf(objValue));
+            mDashboardColumns.setSummary(mDashboardColumns.getEntry());
+            return true;
+        }	
+	if (preference == mDashboardSwitches) {
             Settings.System.putInt(getContentResolver(), Settings.System.DASHBOARD_SWITCHES,
                     Integer.valueOf((String) objValue));
             mDashboardSwitches.setValue(String.valueOf(objValue));
