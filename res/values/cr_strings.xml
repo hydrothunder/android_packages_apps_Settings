@@ -379,4 +379,12 @@
     <string name="qs_num_rows_title">Number of QS rows</string>
     <string name="qs_num_rows_showing">%1$s rows are shown</string>
 
+    <!-- Smart pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">No dismissable</string>
+    <string name="smart_pulldown_persistent">No persistent</string>
+    <string name="smart_pulldown_all">No dismissable or persistent</string>
+
 </resources>

@@ -88,7 +88,14 @@
     <PreferenceCategory
         android:title="@string/quicksettings_title" >
 
-     <ListPreference
+    <ListPreference
+         android:key="smart_pulldown"
+         android:title="@string/smart_pulldown_title"
+         android:entries="@array/smart_pulldown_entries"
+         android:entryValues="@array/smart_pulldown_values"
+         android:persistent="false" /> 
+
+    <ListPreference
          android:key="sysui_qs_num_rows"
          android:title="@string/qs_num_rows_title"
          android:entries="@array/qs_num_rows_entries"
