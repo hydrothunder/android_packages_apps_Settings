@@ -107,6 +107,10 @@
                 android:summary="@string/wake_when_plugged_or_unplugged_summary"
                 android:defaultValue="false"/>
 
+    <PreferenceCategory
+            android:key="dashboard_category"
+            android:title="@string/dashboard_category">
+
         <ListPreference
                 android:key="dashboard_columns"
                 android:title="@string/dashboard_columns_title"
@@ -115,6 +119,14 @@
                 android:entryValues="@array/dashboard_columns_values"
                 android:summary="@string/dashboard_columns_summary"
                 android:persistent="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="dashboard_tileview_dividers"
+                android:title="@string/dashboard_tileview_dividers_title"
+                android:summary="@string/dashboard_tileview_dividers_summary"
+                android:defaultValue="false" />
+
+    </PreferenceCategory>
 
         <!-- Cast screen -->
         <PreferenceScreen
