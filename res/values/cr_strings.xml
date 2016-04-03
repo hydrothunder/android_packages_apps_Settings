@@ -314,6 +314,10 @@
     <string name="battery_fully_charged_notif_title">Battery fully charged notification</string>
     <string name="battery_fully_charged_notif_summary">Show a notification when the battery is fully charged</string>
 
+    <!-- Force Heads Up on all applications -->
+    <string name="force_headsup_title">Force heads up</string>
+    <string name="force_headsup_summary">Force heads up in all applications</string>
+
     <!-- Battery light settings -->
     <string name="battery_light_full_color_title">Charged (90%)</string>
     <string name="battery_light_really_full_color_title">Charged (100%)</string>
