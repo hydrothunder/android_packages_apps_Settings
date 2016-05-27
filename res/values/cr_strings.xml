@@ -309,5 +309,9 @@
     <string name="heads_up_snooze_30min">30 minutes</string>
     <string name="heads_up_snooze_45min">45 minutes</string>
     <string name="heads_up_snooze_60min">60 minutes</string>
+	
+    <!-- Battery fully charged notification -->
+    <string name="battery_fully_charged_notif_title">Battery fully charged notification</string>
+    <string name="battery_fully_charged_notif_summary">Show a notification when the battery is fully charged</string>
 
 </resources>
