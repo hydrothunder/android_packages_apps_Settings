@@ -53,6 +53,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -62,6 +64,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mQuickPulldown;
+    private ListPreference mTileAnimationStyle;
+    private ListPreference mTileAnimationDuration;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -112,6 +116,24 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mQuickPulldown.setValue(String.valueOf(quickPulldown));
         updatePulldownSummary(quickPulldown);
         mQuickPulldown.setOnPreferenceChangeListener(this);
+
+	// Add animations to quick settings
+        mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
+        int tileAnimationStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_STYLE, 0,
+                UserHandle.USER_CURRENT);
+        mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
+        updateTileAnimationStyleSummary(tileAnimationStyle);
+        updateAnimTileDuration(tileAnimationStyle);
+        mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+        mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
+        int tileAnimationDuration = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_DURATION, 1500,
+                UserHandle.USER_CURRENT);
+        mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
+        updateTileAnimationDurationSummary(tileAnimationDuration);
+        mTileAnimationDuration.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -171,6 +193,19 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, quickPulldown);
             updatePulldownSummary(quickPulldown);
             return true;
+	} else if (preference == mTileAnimationStyle) {
+            int tileAnimationStyle = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_STYLE,
+                    tileAnimationStyle, UserHandle.USER_CURRENT);
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileDuration(tileAnimationStyle);
+            return true;
+        } else if (preference == mTileAnimationDuration) {
+            int tileAnimationDuration = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_DURATION,
+                    tileAnimationDuration, UserHandle.USER_CURRENT);
+            updateTileAnimationDurationSummary(tileAnimationDuration);
+            return true;
         }
         return false;
     }
@@ -195,6 +230,28 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     ? R.string.status_bar_quick_qs_pulldown_summary_left
                     : R.string.status_bar_quick_qs_pulldown_summary_right);
             mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_summary, direction));
+        }
+    }
+
+    private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
+        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
+                .valueOf(tileAnimationStyle))];
+        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
+    }
+
+    private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
+        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
+                .valueOf(tileAnimationDuration))];
+        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
+    }
+
+    private void updateAnimTileDuration(int tileAnimationStyle) {
+        if (mTileAnimationDuration != null) {
+            if (tileAnimationStyle == 0) {
+                mTileAnimationDuration.setSelectable(false);
+            } else {
+                mTileAnimationDuration.setSelectable(true);
+            }
         }
     }
 
