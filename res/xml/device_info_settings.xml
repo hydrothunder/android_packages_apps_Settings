@@ -140,8 +140,8 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kernel_version"
                 android:summary="@string/device_info_default"/>
-
-		<!-- HydroThunder version -->
+        
+        <!-- HydroThunder version -->
         <Preference android:key="hydrothunder_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/hydrothunder_version_title"
