@@ -19,8 +19,8 @@
 
         <!-- Changelog -->
         <PreferenceScreen android:key="changelog"
-                android:title="@string/changelog_temasek_title"
-                android:fragment="com.android.settings.temasek.Changelog" />
+                android:title="@string/changelog_hydrothunder_title"
+                android:fragment="com.android.settings.hydrothunder.Changelog" />
 
         <!-- System update settings - launches activity -->
         <PreferenceScreen android:key="system_update_settings"
