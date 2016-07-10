@@ -6,6 +6,9 @@
     <string name="hydrothunder_version_title">HydroThunder Unofficial Version</string>
     <!-- Do NOT translate this -->
     <string name="hydrothunder_version_default">Build V0.0</string>
+	
+	<!-- HydroThunder Settings -->
+    <string name="hydrothunder_settings_title">HydroThunder Settings</string>
     
     <!-- Changelog -->
     <string name="changelog_hydrothunder_title">Changelog</string>

@@ -246,6 +246,14 @@
                 android:icon="@drawable/ic_settings_privacy"
                 />
 
+        <!-- HydroThunder Settings -->
+        <dashboard-tile
+                android:id="@+id/hydrothunder_settings"
+                android:title="@string/hydrothunder_settings_title"
+                android:fragment="com.android.settings.hydrothunder.HydroThunderSettings"
+                android:icon="@drawable/ic_settings_system"
+                />
+
         <!-- Location -->
         <dashboard-tile
                 android:id="@+id/location_settings"
