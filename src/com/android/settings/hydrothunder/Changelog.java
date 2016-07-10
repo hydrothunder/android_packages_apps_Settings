@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.temasek;
+package com.android.settings.hydrothunder;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -51,7 +51,7 @@ public class Changelog extends Fragment {
             }
             text = data.toString();
         } catch (IOException e) {
-            text = getString(R.string.changelog_temasek_error);
+            text = getString(R.string.changelog_hydrothunder_error);
         } finally {
             try {
                 if (inputReader != null) {
