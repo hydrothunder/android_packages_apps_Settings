@@ -1337,7 +1337,7 @@ public class SettingsActivity extends Activity
 
                     if (!getPackageManager().hasSystemFeature(
                             CMContextConstants.Features.WEATHER_SERVICES) || !showWeatherMenu) {
-						removeTile = true;
+			removeTile = true;
                     }
                 } else if (id == R.id.supersu_settings) {
                     // Embedding into Settings is supported from SuperSU v1.85 and up
