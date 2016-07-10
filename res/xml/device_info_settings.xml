@@ -141,6 +141,12 @@
                 android:title="@string/kernel_version"
                 android:summary="@string/device_info_default"/>
 
+		<!-- HydroThunder version -->
+        <Preference android:key="hydrothunder_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/hydrothunder_version_title"
+                android:summary="@string/hydrothunder_version_default"/>
+
         <!-- Build date -->
         <Preference android:key="build_date"
                 style="?android:preferenceInformationStyle"

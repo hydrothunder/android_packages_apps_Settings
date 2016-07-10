@@ -2,7 +2,12 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Changelog -->
+    <!-- About phone screen, HydroThunder version -->
+    <string name="hydrothunder_version_title">HydroThunder Unofficial Version</string>
+    <!-- Do NOT translate this -->
+    <string name="hydrothunder_version_default">Build V0.0</string>
+	
+	<!-- Changelog -->
     <string name="changelog_hydrothunder_title">Changelog</string>
     <string name="changelog_hydrothunder_error">Unable to load changelog</string>
 
