@@ -9,6 +9,18 @@
 	
 	<!-- HydroThunder Settings -->
     <string name="hydrothunder_settings_title">HydroThunder Settings</string>
+	
+	<!-- General Strings -->
+    <string name="attention">Attention</string>
+    <string name="default_string">Default</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="ok">Ok</string>
+    <string name="reset_message">Reset all entries to default?</string>
+    <string name="reset_default_message">Reset default</string>
+    <string name="additional_options_title">Additional options</string>
+    <string name="general_options_title">General</string>
+	<string name="cancel">Cancel</string>
     
     <!-- Changelog -->
     <string name="changelog_hydrothunder_title">Changelog</string>
