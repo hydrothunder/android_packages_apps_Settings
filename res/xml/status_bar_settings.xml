@@ -58,7 +58,7 @@
 
      <PreferenceScreen
             android:key="battery_bar"
-            android:fragment="com.android.settings.temasek.BatteryBar"
+            android:fragment="com.android.settings.hydrothunder.BatteryBar"
             android:title="@string/battery_bar"
             android:icon="@drawable/ic_settings_battery" />
 
