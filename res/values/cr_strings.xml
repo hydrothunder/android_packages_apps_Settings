@@ -7,13 +7,13 @@
     <!-- Do NOT translate this -->
     <string name="hydrothunder_version_default">Build V0.0</string>
 	
-	<!-- HydroThunder Settings -->
+    <!-- HydroThunder Settings -->
     <string name="hydrothunder_settings_title">HydroThunder Settings</string>
 	
-	<!-- General Strings -->
+    <!-- General Strings -->
     <string name="attention">Attention</string>
     <string name="default_string">Default</string>
-	<string name="reset">Reset</string>
+    <string name="reset">Reset</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="ok">Ok</string>
@@ -22,7 +22,7 @@
     <string name="reset_default_message">Reset default</string>
     <string name="additional_options_title">Additional options</string>
     <string name="general_options_title">General</string>
-	<string name="cancel">Cancel</string>
+    <string name="cancel">Cancel</string>
     
     <!-- Changelog -->
     <string name="changelog_hydrothunder_title">Changelog</string>
@@ -126,8 +126,14 @@
     <string name="battery_bar_thickness_title">Battery bar thickness</string>
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+    <string name="battery_bar_charging_color">Battery bar charging color</string>
+    <string name="battery_bar_battery_low_color">Battery bar low battery color</string>
+    <string name="battery_bar_style_regular">Regular</string>
+    <string name="battery_bar_style_center_mirrored">Center-mirrored</string>
+    <string name="battery_bar_style_reversed">Reversed</string>
 
-<!-- Gesture Anywhere -->
+
+    <!-- Gesture Anywhere -->
     <string name="gesture_anywhere_title">Gesture Anywhere</string>
     <string name="gesture_anywhere_enabled_title">Gesture Anywhere</string>
     <string name="gesture_anywhere_enabled_summary">Enable the Gesture Anywhere feature</string>
@@ -209,7 +215,7 @@
     <string name="network_traffic_color_reset">Reset color</string>
     <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
 	
-	<!-- Status bar - Clock -->
+    <!-- Status bar - Clock -->
     <string name="status_bar_clock_category">Clock</string>
     <string name="clock_color_title">Color</string>
     <string name="status_bar_clock_style_reset">Reset color</string>
