@@ -2975,6 +2975,8 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
         </activity>
+		
+        <activity android:name=".headsup.HeadsUpSettings" />
 
     </application>
 </manifest>
