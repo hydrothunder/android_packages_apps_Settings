@@ -23,6 +23,10 @@
     <string name="additional_options_title">Additional options</string>
     <string name="general_options_title">General</string>
     <string name="cancel">Cancel</string>
+	
+    <!-- Vendor version -->
+    <string name="vendor_version">Vendor version</string>
+    <string name="vendor_version_default">Unknown</string>
     
     <!-- Changelog -->
     <string name="changelog_hydrothunder_title">Changelog</string>
