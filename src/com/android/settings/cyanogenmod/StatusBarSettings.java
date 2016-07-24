@@ -67,7 +67,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mQuickPulldown;
     private ListPreference mNumColumns;
-    private ListPreference mNumRows;
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
     private ListPreference mTileAnimationInterpolator;
@@ -151,24 +150,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 	// Number of QS Columns 3,4,5
         mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
         int numColumns = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColumns(),
+                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
                 UserHandle.USER_CURRENT);
         mNumColumns.setValue(String.valueOf(numColumns));
         updateNumColumnsSummary(numColumns);
         mNumColumns.setOnPreferenceChangeListener(this);
 
-        // Number of QS Rows 3,4
-        mNumRows = (ListPreference) findPreference("sysui_qs_num_rows");
-        int numRows = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_ROWS, getDefaultNumRows(),
-                UserHandle.USER_CURRENT);
-        mNumRows.setValue(String.valueOf(numRows));
-        updateNumRowsSummary(numRows);
-        mNumRows.setOnPreferenceChangeListener(this);
-
-        setHasOptionsMenu(true);
-        mCheckPreferences = true;
-        return prefSet;
     }
 
     @Override
@@ -253,12 +240,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     numColumns, UserHandle.USER_CURRENT);
             updateNumColumnsSummary(numColumns);
             return true;
-        } else if (preference == mNumRows) {
-            int numRows = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_ROWS,
-                    numRows, UserHandle.USER_CURRENT);
-            updateNumRowsSummary(numRows);
-            return true;
         }
         return false;
     }
@@ -298,13 +279,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mNumColumns.setSummary(getResources().getString(R.string.qs_num_columns_showing, prefix));
     }
 
-    private void updateNumRowsSummary(int numRows) {
-        String prefix = (String) mNumRows.getEntries()[mNumRows.findIndexOfValue(String
-                .valueOf(numRows))];
-        mNumRows.setSummary(getResources().getString(R.string.qs_num_rows_showing, prefix));
-    }
-
-    private int getDefaultNumColumns() {
+    private int getDefaultNumColums() {
         try {
             Resources res = getActivity().getPackageManager()
                     .getResourcesForApplication("com.android.systemui");
@@ -315,19 +290,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         } catch (Exception e) {
             return 3;
         }
-    }
-        private int getDefaultNumRows() {
-        try {
-            Resources res = getActivity().getPackageManager()
-                    .getResourcesForApplication("com.android.systemui");
-            int val = res.getInteger(res.getIdentifier("quick_settings_num_rows", "integer",
-                    "com.android.systemui")); // better not be larger than 4, that's as high as the
-                                              // list goes atm
-            return Math.max(1, val);
-        } catch (Exception e) {
-            return 3;
-        }
-    }
+    
 
     private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
         String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
