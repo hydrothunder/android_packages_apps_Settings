@@ -166,9 +166,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         updateNumRowsSummary(numRows);
         mNumRows.setOnPreferenceChangeListener(this);
 
-        setHasOptionsMenu(true);
-        mCheckPreferences = true;
-        return prefSet;
     }
 
     @Override
