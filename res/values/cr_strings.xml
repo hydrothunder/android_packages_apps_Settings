@@ -20,6 +20,7 @@
     <string name="reset_message">Reset all entries to default?</string>
     <string name="extras_hydrothunder_settings">HydroThunder Extras</string>
     <string name="reset_default_message">Reset default</string>
+	<string name="quicksettings_title">Quicksettings</string>
     <string name="additional_options_title">Additional options</string>
     <string name="general_options_title">General</string>
     <string name="cancel">Cancel</string>
@@ -369,5 +370,21 @@
     <string name="recents_show_membar_title">RAM memory bar</string>
     <string name="recents_show_membar_summary_on">Available RAM memory bar will be displayed on recents view</string>
     <string name="recents_show_membar_summary_off">Toggle to display available RAM memory bar on recents view</string>
+
+    <!-- QS Tiles Columns -->
+    <string name="qs_num_columns_title">Number of QS tiles per row</string>
+    <string name="qs_num_columns_showing">%1$s tiles per row are shown</string>
+
+    <!-- QS Tiles Rows -->
+    <string name="qs_num_rows_title">Number of QS rows</string>
+    <string name="qs_num_rows_showing">%1$s rows are shown</string>
+
+    <!-- Smart pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">No dismissable</string>
+    <string name="smart_pulldown_persistent">No persistent</string>
+    <string name="smart_pulldown_all">No dismissable or persistent</string>
 
 </resources>
