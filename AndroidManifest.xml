@@ -2695,9 +2695,6 @@
             </intent-filter>
         </activity>
 
-	<!-- Hide Apps from Recents (HAFR) -->
-        <activity android:name=".hydrothunder.HAFRAppListActivity" />
-
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
