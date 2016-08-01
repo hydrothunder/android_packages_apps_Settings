@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import android.provider.Settings;
 import com.android.settings.ProfileSelectDialog;
 import com.android.settings.R;
 import com.android.settings.Utils;
