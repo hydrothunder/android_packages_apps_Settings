@@ -116,7 +116,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_LIVEDISPLAY = "live_display";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
-        private static final String DASHBOARD_SWITCHES = "dashboard_switches";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
@@ -138,7 +137,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mProximityCheckOnWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
-    private ListPreference mDashboardSwitches;
+    private SwitchPreference mRecentsClearAll;
+    private ListPreference mRecentsClearAllLocation;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -257,12 +257,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
-
-        mDashboardSwitches = (ListPreference) findPreference(DASHBOARD_SWITCHES);
-        mDashboardSwitches.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.DASHBOARD_SWITCHES, 0)));
-        mDashboardSwitches.setSummary(mDashboardSwitches.getEntry());
-        mDashboardSwitches.setOnPreferenceChangeListener(this);
 
         mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
         if (mAutoBrightnessPreference != null && isAutomaticBrightnessAvailable(getResources())) {
@@ -773,13 +767,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
-        }
-	        if (preference == mDashboardSwitches) {
-            Settings.System.putInt(getContentResolver(), Settings.System.DASHBOARD_SWITCHES,
-                    Integer.valueOf((String) objValue));
-            mDashboardSwitches.setValue(String.valueOf(objValue));
-            mDashboardSwitches.setSummary(mDashboardSwitches.getEntry());
-            return true;
         }
         return true;
     }

@@ -25,8 +25,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.UserHandle;
-import android.provider.Settings;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -185,7 +183,7 @@ public class DashboardSummary extends InstrumentedFragment {
         Log.d(LOG_TAG, "rebuildUI took: " + delta + " ms");
     }
 
-    public void updateTileView(Context context, Resources res, DashboardTile tile,
+    private void updateTileView(Context context, Resources res, DashboardTile tile,
             ImageView tileIcon, TextView tileTextView, TextView statusTextView, Switch switchBar) {
 
         if (!TextUtils.isEmpty(tile.iconPkg)) {
@@ -228,23 +226,10 @@ public class DashboardSummary extends InstrumentedFragment {
         }
 
         if (tile.switchControl != null) {
-            boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
-            int dashboardSwitches = isPrimary ? getDashboardSwitches(context) : 0;
-
-            if (dashboardSwitches == 0) {
-                switchBar.setVisibility(View.GONE);
-            }
-            if (dashboardSwitches == 1) {
-                switchBar.setVisibility(View.VISIBLE);
-            }
+            switchBar.setVisibility(View.VISIBLE);
         } else {
-            // do nothing
+            switchBar.setVisibility(View.GONE);
         }
-    }
-
-    private static int getDashboardSwitches(Context context) {
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.DASHBOARD_SWITCHES, 0);
     }
 
     private void sendRebuildUI() {
