@@ -106,6 +106,7 @@
                 android:title="@string/wake_when_plugged_or_unplugged_title"
                 android:summary="@string/wake_when_plugged_or_unplugged_summary"
                 android:defaultValue="false"/>
+    </PreferenceCategory>
 
     <PreferenceCategory
             android:key="dashboard_category"
