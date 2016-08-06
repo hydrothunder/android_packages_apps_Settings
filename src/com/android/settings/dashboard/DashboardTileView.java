@@ -18,6 +18,7 @@ package com.android.settings.dashboard;
 
 import android.app.Activity;
 import android.content.Context;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import android.provider.Settings;
 import com.android.settings.ProfileSelectDialog;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -58,9 +60,24 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         final View view = LayoutInflater.from(context).inflate(R.layout.dashboard_tile, this);
 
         mImageView = (ImageView) view.findViewById(R.id.icon);
+
         mTitleTextView = (TextView) view.findViewById(R.id.title);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.DASHBOARD_TILEVIEW_DOUBLE_LINES, 0) == 1) {
+        mTitleTextView.setSingleLine(false);
+        } else {
+        mTitleTextView.setSingleLine(true);
+        }
+
         mStatusTextView = (TextView) view.findViewById(R.id.status);
+
         mDivider = view.findViewById(R.id.tile_divider);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.DASHBOARD_TILEVIEW_DIVIDERS, 0) == 1) {
+        mDivider.setVisibility(View.GONE);
+        } else {
+        mDivider.setVisibility(View.VISIBLE);
+        }
         mSwitch = (Switch) view.findViewById(R.id.dashboard_switch);
 
         setOnClickListener(this);
