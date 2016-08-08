@@ -29,7 +29,6 @@ public class FloatingWindows extends SettingsPreferenceFragment
 
         SwitchPreference mFloatingWindowMode;
         SwitchPreference mGestureAnywhereFloatingWindow;
-        SwitchPreference mSlimActionFloatingWindow;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
