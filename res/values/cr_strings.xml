@@ -25,6 +25,7 @@
     <string name="general_options_title">General</string>
     <string name="cancel">Cancel</string>
 	<string name="screen_and_animations_title">Screen and animations</string>
+	<string name="statusbar_notifications_title">Notifications</string>
 	
     <!-- Vendor version -->
     <string name="vendor_version">Vendor version</string>
