@@ -26,7 +26,6 @@ public class FloatingWindows extends SettingsPreferenceFragment
 
         private static final String FLOATING_WINDOW_MODE = "floating_window_mode";
         private static final String GESTURE_ANYWHERE_FLOATING = "gesture_anywhere_floating";
-        private static final String SLIM_ACTION_FLOATS = "slim_action_floats";
 
         SwitchPreference mFloatingWindowMode;
         SwitchPreference mGestureAnywhereFloatingWindow;
@@ -54,11 +53,6 @@ public class FloatingWindows extends SettingsPreferenceFragment
                     Settings.System.GESTURE_ANYWHERE_FLOATING, 0) == 1);
             mGestureAnywhereFloatingWindow.setOnPreferenceChangeListener(this);
 
-            mSlimActionFloatingWindow = (SwitchPreference)
-                    prefSet.findPreference(SLIM_ACTION_FLOATS);
-            mSlimActionFloatingWindow.setChecked(Settings.System.getInt(resolver,
-                    Settings.System.SLIM_ACTION_FLOATS, 0) == 1);
-            mSlimActionFloatingWindow.setOnPreferenceChangeListener(this);
         }
 
         @Override
@@ -83,11 +77,6 @@ public class FloatingWindows extends SettingsPreferenceFragment
             } else if (preference == mGestureAnywhereFloatingWindow) {
                 Settings.System.putInt(resolver,
                         Settings.System.GESTURE_ANYWHERE_FLOATING,
-                (Boolean) objValue ? 1 : 0);
-                return true;
-            } else if (preference == mSlimActionFloatingWindow) {
-                Settings.System.putInt(resolver,
-                        Settings.System.SLIM_ACTION_FLOATS,
                 (Boolean) objValue ? 1 : 0);
                 return true;
             }
