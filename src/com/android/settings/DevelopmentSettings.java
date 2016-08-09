@@ -188,6 +188,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SHOW_ALL_ANRS_KEY = "show_all_anrs";
 
     private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+    
+    private static final String KILL_APP_LONGPRESS_TIMEOUT = "kill_app_longpress_timeout";
 
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
