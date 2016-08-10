@@ -143,8 +143,6 @@
                 android:summary="@string/dashboard_switches_summary"
                 android:persistent="false" />
 
-    </PreferenceCategory>
-
         <!-- Cast screen -->
         <PreferenceScreen
                 android:key="wifi_display"
